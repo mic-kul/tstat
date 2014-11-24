@@ -6,5 +6,8 @@ class CreateVocations < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :vocations, :name, :unique => true
+    add_index :vocations, :promotion_name, :unique => true
   end
 end

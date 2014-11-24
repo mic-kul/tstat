@@ -6,8 +6,8 @@ class PlayerControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get history" do
-    get :view
+  test "should get player" do
+    get :view, {'name' => 'First player'}
     assert_response :success
   end
 

@@ -1,16 +1,6 @@
 .row
-  h1 Search Player
-  form
-    label Player Name
-    input#input-player-search type="text" name="name"
-    input#submit-player-search type="submit" value="Search"
-.row
-  .large-12.columns
-    table#search-results
-      thead
-        tr
-          th Name
-          th width="70" Level
-          th width="200" Vocation
-          th width="200" World
-      tbody
+  %h1 Search Player
+  %form
+    %label Player Name
+    %input#input-player-search {:type=>"text", :name=>"name"}
+    %input#submit-player-search {:type=>"submit", :value=>"Search"}

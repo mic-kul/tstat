@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20141118162852) do
     t.datetime "updated_at"
   end
 
+  add_index "guilds", ["name"], name: "index_guilds_on_name", unique: true, using: :btree
+
   create_table "player_histories", force: true do |t|
     t.integer "player_id"
     t.integer "year"
@@ -38,7 +40,7 @@ ActiveRecord::Schema.define(version: 20141118162852) do
 
   create_table "player_names", force: true do |t|
     t.string   "name"
-    t.string   "date_changed"
+    t.datetime "time_changed"
     t.integer  "player_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -63,17 +65,15 @@ ActiveRecord::Schema.define(version: 20141118162852) do
     t.boolean  "promotion"
     t.integer  "world_id"
     t.integer  "vocation_id"
+    t.integer  "guild_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "players", ["guild_id"], name: "index_players_on_guild_id", using: :btree
+  add_index "players", ["name"], name: "index_players_on_name", unique: true, using: :btree
   add_index "players", ["vocation_id"], name: "index_players_on_vocation_id", using: :btree
   add_index "players", ["world_id"], name: "index_players_on_world_id", using: :btree
-
-  create_table "players_guilds", id: false, force: true do |t|
-    t.integer "player_id"
-    t.integer "guild_id"
-  end
 
   create_table "vocations", force: true do |t|
     t.string   "name"
@@ -82,11 +82,16 @@ ActiveRecord::Schema.define(version: 20141118162852) do
     t.datetime "updated_at"
   end
 
+  add_index "vocations", ["name"], name: "index_vocations_on_name", unique: true, using: :btree
+  add_index "vocations", ["promotion_name"], name: "index_vocations_on_promotion_name", unique: true, using: :btree
+
   create_table "worlds", force: true do |t|
     t.string   "name"
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "worlds", ["name"], name: "index_worlds_on_name", unique: true, using: :btree
 
 end

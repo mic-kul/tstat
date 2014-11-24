@@ -7,7 +7,7 @@ class GuildControllerTest < ActionController::TestCase
   end
 
   test "should get view" do
-    get :view
+    get :view, {'name' => 'GMs'}
     assert_response :success
   end
 
