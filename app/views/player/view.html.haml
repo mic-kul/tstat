@@ -1,8 +1,8 @@
-h1
+%h1
   = @player.name
-  small
+  %small
     = " - player's profile"
-p
+%p
   = @player.name
   = ", level "
   = @player.level
@@ -12,34 +12,34 @@ p
   = @player.world_name
   = ", member of "
 
-h3
+%h3
   = "Latest online records"
-  span.small  more &raquo;
-table.table.table-striped
-  thead
-    tr
-      th Date
-      th Online time
-      th Level
-      th Level min
-      th Level max
-      th Level diff
-  tbody
+  %span.small  more &raquo;
+%table.table.table-striped
+  %thead
+    %tr
+      %th Date
+      %th Online time
+      %th Level
+      %th Level min
+      %th Level max
+      %th Level diff
+  %tbody
     - for h in @player.player_histories  do
-      tr
-        td
+      %tr
+        %td
           = h.year
           = "-"
           = h.month
           = "-"
           = "%02d" % h.day
-        td
+        %td
           = h.online
-        td
+        %td
           = h.level
-        td
+        %td
           = h.level_min
-        td
+        %td
           = h.level_max
-        td
+        %td
           = (h.level_max - h.level_min)

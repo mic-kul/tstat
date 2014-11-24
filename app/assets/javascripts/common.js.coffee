@@ -27,8 +27,7 @@ $ ->
         '</div>'
       ].join('\n'),
       suggestion: (data) ->
-        '<p><strong>' + data.name + '</strong> - (lvl: ' + data.level + '), ' + data.vocation_name
-        + ' from ' + data.world_name + '</p>';
+        '<p><strong>' + data.name + "</strong>" + ' (lvl: ' + data.level.toString() + '), ' + data.vocation_name + ' from ' + data.world_name + '</p>'
   }
   },
     {
